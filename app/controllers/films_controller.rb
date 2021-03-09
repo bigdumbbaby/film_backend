@@ -15,4 +15,8 @@ class FilmsController < ApplicationController
     render json: response.to_hex
   end
 
+  def search
+    response = JSON.parse(RestClient.get("https://api.themoviedb.org/3/search/movie?api_key=56f6662bff7c2a1c935c2575984e9f97&language=en-US&query=#{params[:search_name]}&page=1&include_adult=false"))
+    render json: response
+  end
 end
