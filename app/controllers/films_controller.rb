@@ -12,7 +12,7 @@ class FilmsController < ApplicationController
   def getColorPalette
     Miro.options[:color_count] = params[:palette_num]
     response = Miro::DominantColors.new("https://image.tmdb.org/t/p/w300#{params[:poster_path]}")
-    render json: response.to_hex
+    render json: response.to_rgb
   end
 
   def search
